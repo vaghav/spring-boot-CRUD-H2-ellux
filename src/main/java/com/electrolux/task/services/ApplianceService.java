@@ -11,4 +11,6 @@ public interface ApplianceService {
     void createAppliance(List<CustomerDTO> dtos);
 
     Optional<Appliance> getApplianceStatusById(long id);
+
+    void save(long id);
 }
