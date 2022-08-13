@@ -57,7 +57,7 @@ public class ApplianceServiceImpl implements ApplianceService {
     public void save(long id) {
         applianceRepository.findById(id).ifPresentOrElse(appliance -> appliance.setStatus("online"),
                 () -> {
-                    throw new IllegalStateException("Appliance doesn't exist");
+                    throw new IllegalStateException("Appliance doesn't exist or it's offline");
                 });
     }
 
