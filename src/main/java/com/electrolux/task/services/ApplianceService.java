@@ -12,5 +12,5 @@ public interface ApplianceService {
 
     Optional<Appliance> getApplianceStatusById(long id);
 
-    void save(long id);
+    void updateStatus(long id);
 }

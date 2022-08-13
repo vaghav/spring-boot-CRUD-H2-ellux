@@ -25,7 +25,7 @@ public class ApplianceController {
     @PutMapping("/appliance/{id}/status")
     public ResponseEntity<String> updateStatus(@PathVariable("id") long id) {
         try {
-            applianceService.save(id);
+            applianceService.updateStatus(id);
             return new ResponseEntity<>("Appliances is online", OK);
         } catch (Exception ex) {
             // TODO: log exception root cause and message.
