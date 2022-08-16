@@ -1,14 +1,7 @@
 package com.electrolux.task.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "appliance")
@@ -34,14 +27,18 @@ public class Appliance {
     @JoinColumn(name = "customer_id")
     private Customer customer;
 
+    @Column(name = "created")
+    private LocalDateTime created;
+
     public Appliance() {
     }
 
-    public Appliance(String factoryNr, String type, String description, String status) {
+    public Appliance(String factoryNr, String type, String description, String status, LocalDateTime created) {
         this.factoryNr = factoryNr;
         this.type = type;
         this.description = description;
         this.status = status;
+        this.created = created;
     }
 
     public long getId() {
@@ -88,9 +85,18 @@ public class Appliance {
         this.customer = customer;
     }
 
+    public LocalDateTime getCreated() {
+        return created;
+    }
+
+    public void setCreated(LocalDateTime created) {
+        this.created = created;
+    }
+
     @Override
     public String toString() {
-        return "Appliance [id=" + id + ", title=" + factoryNr + ", desc=" + type + ", published=" + description + "]";
+        return "Appliance [id=" + id + ", title=" + factoryNr + ", desc=" + type +
+                ", published=" + description + ", created=" + created + "]";
     }
 
 }

@@ -25,14 +25,15 @@ public class ApplianceController {
     @PutMapping("/appliance/{id}/status")
     public ResponseEntity<String> updateStatus(@PathVariable("id") long id) {
         try {
-            applianceService.updateStatus(id);
-            return new ResponseEntity<>("Appliances is online", OK);
+            String status = applianceService.updateStatus(id);
+            return new ResponseEntity<>("Appliances is " + status, OK);
         } catch (Exception ex) {
             // TODO: log exception root cause and message.
             return new ResponseEntity<>("Unexpected error happened on server side", INTERNAL_SERVER_ERROR);
         }
     }
 
+    // Not included in the requirements, just made on my initiative
     @PostMapping("/appliance")
     public ResponseEntity<String> createAppliance(@RequestBody ApplianceCreateRequestDTO request) {
         try {
